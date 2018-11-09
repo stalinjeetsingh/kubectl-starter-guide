@@ -1,0 +1,50 @@
+kubernetes:
+**********************************
+how to create pods
+
+#sample.yml (file name)
+
+apiversiom:v1
+kind:pod
+metadata:
+  name:mypod
+spec:
+  containers:
+     name:
+     image:
+     cmd:["ls" "pwd"]
+
+***************************
+
+comand to create pods:
+kubectl create 0f sample.yml
+
+# to check the pods
+kubectl get pods
+
+# to check the logs
+ kubectl logs sample
+
+***************************
+if we want something to run continously than we create pod
+if we want something to run short time than we create service/job
+
+if you specific a command/service to run e.g kind:pod than kubernete will try to run command again and again even if it exectuted.
+so we can define it as kind:service
+
+
+apiversiom:batch/v1
+kind:job
+metadata:
+  name:mypod
+spec:
+ templete"
+   spec:
+     containers:
+        name:
+        image:
+        cmd:["ls" "pwd"]
+   restartpolicy: never
+
+# to check the job
+kubectl get job
