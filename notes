@@ -1,4 +1,6 @@
 kubernetes:
+
+Kubectl is a client/control for our kubernetes 
 **********************************
 how to create pods
 
