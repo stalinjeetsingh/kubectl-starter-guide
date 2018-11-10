@@ -6,15 +6,15 @@ how to create pods
 
 #sample.yml (file name)
 
-apiversiom:v1
-kind:pod
+apiVersion: v1
+kind: Pod
 metadata:
-  name:mypod
+  name: sample 
 spec:
   containers:
-     name:
-     image:
-     cmd:["ls" "pwd"]
+    - name: centos 
+      image: centos 
+      command: ["pwd"]
 
 ***************************
 
