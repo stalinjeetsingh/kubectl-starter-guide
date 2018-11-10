@@ -1,6 +1,16 @@
 kubernetes:
 
 Kubectl is a client/control for our kubernetes 
+
+#also create a group 
+sudo groupadd docker
+#add the user to it
+sudo usermod -a -G myusername docker
+
+# if you running kubernetes on google cloud vm, you dont need master.you just need nodes
+also run glloud auth login (to access kubernetes on gcloud)
+ans run "gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project devops1-218400"
+here devops1-218400 is my project name.replace it with your project name
 **********************************
 how to create pods
 
