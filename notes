@@ -2,6 +2,10 @@ kubernetes:
 
 Kubectl is a client/control for our kubernetes 
 
+its quite senstive to uppercase/lower case commands so be extra careful.For e.g
+kind: Job (J capital) or restartPolicy: Never (P and N capital)
+
+
 #also create a group 
 sudo groupadd docker
 #add the user to it
@@ -36,6 +40,9 @@ kubectl get pods
 
 # to check the logs
  kubectl logs sample
+ 
+# to view live/running status
+watch kubectl get pods
 
 ***************************
 if we want something to run continously than we create pod
