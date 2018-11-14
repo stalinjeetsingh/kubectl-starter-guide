@@ -28,7 +28,9 @@ spec:
   containers:
     - name: centos 
       image: centos 
-      command: ["pwd"]
+      
+ ## in case you specifiy any command after image like pwd or ls, it will run this command-->run-->finish-->re-run
+ means pod will keep ruuning and crashing.So in case we want to run any command indstead of kind: Pod , we specifiy kind: job
 
 ***************************
 
