@@ -12,7 +12,7 @@ sudo groupadd docker
 sudo usermod -a -G myusername docker
 
 # if you running kubernetes on google cloud vm, you dont need master.you just need nodes
-also run glloud auth login (to access kubernetes on gcloud)
+also run gcloud auth login (to access kubernetes on gcloud)
 and run "gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project devops1-218400"
 here devops1-218400 is my project name.replace it with your project name
 **********************************
