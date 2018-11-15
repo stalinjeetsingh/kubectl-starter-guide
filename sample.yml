@@ -4,19 +4,19 @@ creating a set of 2 cluster trough kubernetes.Before that we need to have a imag
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: webserver1
-  labels:
-    tier: webserver1
+   name: httpd
+   labels:
+     tier: webserver
 spec:
   replicas: 2
   selector:
     matchLabels:
-      tier: webserver1
+     tier: webserver
   template:
     metadata:
-      labels:
-        tier: webserver1
+       labels:
+         tier: webserver
     spec:
-      containers:
-        - name: webservice1
-          image: centos
+       containers:
+        - name: mywebserver
+          image: myweb:latest
