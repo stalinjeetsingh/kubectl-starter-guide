@@ -1,123 +1,51 @@
 I ran history coammand to give you list of all commands I ran:
+Background: I was trying to build a container for httpd server.
 
-sudo yum install docker -y
-    2 sudo yum install docker -y
-    3  vi Dockerfile
-    4  docker build -t raghu:latest .
-    5  sudo system start docker
-    6  sudo systemctl start docker
-    7  sudo systemctl enable docker
-    8  docker build -t raghu:latest .
-    9  sudo groupadd docker
-   10  sudo usermod -a -G sunnyisgone docker
-   11  sudo usermod -a -G docker sunnyisgone 
-   12  docker build -t raghu:latest .
-   13  logout
-   14  ls
-   15  docker build -t raghu:latest .
-   16  sudo docker build -t raghu:latest .
-   17  docker images
-   18  sudo docker images
-   19  docker run raghu
-   20  sudo docker run raghu
-   21  docker ps
-   22  sudo docker ps
-   23  usermod -a -G docker sunnyisgone
-   24  sudo usermod -a -G docker sunnyisgone
-   25  sudo docker ps
-   26  docker run raghu
-   27  sudo docker run raghu
-   28  sudo docker run -h raghu.mydomain.com raghu
-   29  docker ps
-   30  sudo docker ps
-   31  vi Dockerfile 
-   32  docker build -t raghu1:latest
-   33  docker build -t raghu1:latest .
-   34  sudo docker build -t raghu1:latest .
-   35  sudo dockerimages
-   36  sudo docker images
-   37  sudo docker run raghu1
-   38  sudo docker run -h rahgu1.mydoamin.com raghu1
-   39  docker ps
-   40  sudo docker ps
-   41  ls
-   42  docker ps
-   43  docker ps -a
-   44  docker run raghu1
-   45  docker run -h raghu.mydoamin.comraghu1
-   46  docker run -h raghu.mydoamin.com raghu1
-   47  docker ps -a
-   48  docker ps
-   49  vi Dockerfile 
-   50  sudo docker build -t raghu1:latest .
-   51  vi Dockerfile 
-   52  docker run
-   53  docker run raghu1
-   54  sudo groupadd docker
-   55  sudo usermod -a -G sunnyisgone docker
-   56  sudo usermod -a -G docker sunnyisgone
-   57  sudo systemctl restart docker
-   58  vi Dockerfile 
-   59  docker build -t raghu2:latest .
-   60  docker images
-   61  docker run raghu2
-   62  docker ps
-   63  docker ps -a
-   64  docker run -d raghu2
-   65  docker ps
-   66  docker inspect c106e85d3f3a
-   67  curl 172.17.0.2
-   68  docker run -d -p 80:80 raghu2
-   69  docker images
-   70  docker inspect 06fe099cce9972099e5dd99f82eaab11be5d45afea7e457061833532ae82c125
-   71  curl 172.17.0.3
-   72  gcloud auth logi
-   73  gcloud auth login
-   74  gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project devops1-218400
-   75  kubectl get pods
-   76  sudo yum install kubectl
-   77  kubectl get pods
-   78  vim sample.yml
-   79  docker images
-   80  vim sample.yml
-   81  kubectl create -f sample.yml 
-   82  kubectl get pods
-   83  ls
-   84  vim sample.yml 
-   85  docker login
-   86  docker push raghu2
-   87  docker push docker.io/stalinjeet/raghu2
-   88  docker push docker.io/stalinjeet/raghu2:latest
-   89  docker images
-   90  docker tag 25871507d475 stalinjeet/raghu:latest
-   91  docker push stalinjeet/raghu
-   92  docker tag 25871507d475 stalinjeet/raghu2:latest
-   93  docker push stalinjeet/raghu2
-   94  vi sample.yml 
-   95  kubectl create -f sample.yml 
-   96  kubectl get pods
-   97  kubectl delete pods web1-2bmbt web1-fv6n6 
-   98  kubectl create -f sample.yml 
-   99  vi sample.yml 
-  100  kubectl create -f sample.yml 
-  101  kubctl get pods
-  102  kubectl get pods
-  103  kubectl get rs
-  104  kubectl get pods
-  105  kubectl describe web2-4hltk
-  106  kubectl describe pod web2-4hltk
-  107  curl 10.8.6.12
-  108  histroy
-  109  history
-  110  kubectl get pods
-  111  kubectl get rs
-  112  vi sample.yml 
-  113  kubectl apply -f sample.yml 
-  114  kubectl get rs
-  115  kubectl get pods
-  116  history
-  117  history > file1
-  118  ls
-  119  cat file1
-  120  vi file1 
-  121  history
+***********Docker for custome image creation********************
+    1 sudo yum install docker -y
+    2 sudo groupadd docker
+    3 sudo usermod -a -G docker sunnyisgone (my user is sunnyisgone)
+    4 sudo systemctl start docker
+    5 sudo systemctl enable docker
+    # optional sudo systemclt restart docker (in case you get premission denied issue)
+    6  vi Dockerfile
+    7  docker build -t raghu2:latest .  (. here indicate that Dockerfile is in current dir)
+    8  docker images
+    9  docker run raghu2
+    10  docker ps (shows only running containers)
+    11  docker ps -a (shows only running + dead + inactive containers)
+    12  docker run -d raghu2 (to actuall keep running in the backgroud/seprately)
+    13  docker ps
+    14  docker inspect c106e85d3f3a (I get c106e85d3f3a from running dcoker ps. Its image/container id)
+   after running above command try to look for ipv4 adrdress
+    15  curl 172.17.0.2
+    16 docker run -d -p 80:80 raghu2 (to open and run@ port 80)
+    17  docker images
+    18  docker inspect 06fe099cce9972099e5dd99f82eaab11be5d45afea7e457061833532ae82c125
+    19  curl 172.17.0.3
+   docker login
+   user:
+   password
+    20 docker images
+    21 docker tag 25871507d475 stalinjeet/raghu2:latest
+    20 docker push docker.io/stalinjeet/raghu2:latest 
+   
+   
+   *********Kubernetes******************
+   
+   1  gcloud auth login (in case you want to operate via google cloud CLI)
+   2  gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project devops1-218400
+   my project name (devops1-218400 )
+   
+   
+   3  sudo yum install kubectl
+   4  vi sample.yml 
+   5  kubectl create -f sample.yml 
+   6  kubectl get pods
+   7  kubectl delete pods web1-2bmbt web1-fv6n6 (in case you wanna delete some pods)
+   8  kubectl create -f sample.yml 
+   9  kubectl get rs
+  10  kubectl get pods
+  11  kubectl describe web2-4hltk (you will get web2-4hltk from above command.)
+  12  curl 10.8.6.12 (you will get ip from describe command given above)
+  13  histroy (to get the list of all commands I ran)
