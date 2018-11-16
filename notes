@@ -71,4 +71,4 @@ spec:
 kubectl get job
 
 To update
-kubectl apply if sample.yml
+kubectl apply -f sample.yml
