@@ -69,3 +69,6 @@ spec:
 
 # to check the job
 kubectl get job
+
+To update
+kubectl apply if sample.yml
