@@ -1,0 +1,48 @@
+
+##Now to link pods whose ip keep changing, we need to access them trough a stable/static ip
+##for that we use a service. below is an example to creata service.
+## important point is to map the same tier:webs as mention in pods yml file.
+##this will link the serive-->pods
+##in my pods yml file tier: wbes and in my service yml file tier: webs which is enough to link them
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  selector:
+    tier: webs
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    
+    ***************************************
+    ##but service only map 1 service to all the diffrent pods but they are not accessible from outside.
+    ##for that make service as loadbalancer. It will gave us a expertal ip.
+    ##just put type: LoadBalancer in above file as shown below:
+    
+    
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  type: LoadBalancer
+  selector:
+    tier: webs
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    
+    Commands:
+    kubectl create -f svc.yml
+    kubectl get svc
+    kubectl describe svc webs2 (service name you get from get svc command)
+    kubectl delete svc webs2
+    watch kubectl get pods 
+    
+    kubectl describe svc webs2 will display internal and exteral ip. You can test external ip in the browser 
+    
+    
