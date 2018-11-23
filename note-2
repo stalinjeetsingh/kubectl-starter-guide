@@ -1,0 +1,59 @@
+to exceute a command
+kubectl exec pod-name command
+kubectl exec webs pwd
+kubectl exec webs  -c container1 ls
+kubectl exec webs  -c container2 pwd
+
+by default there are three namespace in kubernetes
+namespace define a close boundries for all the pods/containers inside it.
+
+Default namespace (in Google cloud kubernetes):
+1.default
+2.kube-public
+3.kube-system
+
+if we dont specific anything the newly creatly pods will it in delaut namespace
+
+## how to creata namespace
+kubectl create ns testnamespace
+
+to link it to any pods, specifi namespace:testnamespace under metadata field.
+
+now if you create a pod with above config and run kubectl get pods, you will get nothing.
+they have moved to testnamespace from default namespace
+
+instead run kubectl get pods -n testnamespace
+you will find all the pods defined inside yml file with filed namespace:testnamespace
+
+*******************************
+communication:
+
+you get a single ip for your pod which is running two or more container.Now from container -t0- container we can use localhost to 
+connect to one another to use any service
+kubectl exec sample -c centos(cont1) -- ping localhost(cont2)
+# sample=pod
+#centos(1st container)
+#centos2(2nd conatiner)
+
+
+1.communication between two container is very straight forward as there there same netwrok so no issue in communication
+conatiner -to - container
+kubectl exec conainter1 -c conatiner2 --ping localhost
+
+2. pod -to - pod 
+we can do that with ip but ip keeps changing sometime.With name it will not work but with IP we can.
+
+3. Service to Service
+we cannot creat service directly on pod. We need replication sets.
+Now from any pod/replicaset on 1st server can access stuff from server 2 we just need to define the service related with server2
+e.g kubectl exec web2-444cq (pod/replica on 1 server) -- curl -s my-service22( service linked with server 2)
+
+we can acess different items via services from one pod to another if we use services
+but they are in same namespace but what if there are different namespaces
+
+we cannot communicate from one namespace. for that we will provide fully qualified doamin name than we can commnication between different namespace
+nslookup will gave you the fqdn
+
+
+so namespace -to - namespace will be via fqdn
+# use nslookup to find the fqdn
