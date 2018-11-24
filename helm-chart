@@ -31,7 +31,7 @@ we have
 **********************
 Deployment.yml
 
-apiVersion:Deployment
+apiVersion:extensions/v1beta1
 kind:Deployment
 metadata:
   name:nginx
@@ -47,3 +47,22 @@ spec:
         image: nginx:1.13
         ports: 
          - containersPort: 80
+***********************************
+service.yml
+
+kind:Service
+apiVersion:v1
+Metadata:
+  name:nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: main
+      protocol: TCP
+      port: 80
+      targetPort: 80
+
+
+
+
