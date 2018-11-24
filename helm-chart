@@ -1,0 +1,49 @@
+helm cahrt are used to deply pods, servises, deployment all at at single go. We dont have to run each service one by one.
+
+Helm chart
+
+**********************
+
+part1
+
+it has three components:
+1. charts
+2.value
+3.templates
+
+
+**********************
+chart.yml
+## it just a basic descibtion about the whole taks/process
+
+name: testchart
+version: 1.0.0
+description: this is my 1st chart
+maintainers: me@gmail.com
+
+*************************
+
+under tempaltes
+we have 
+1.services.yml
+2.deployment.yml
+
+**********************
+Deployment.yml
+
+apiVersion:Deployment
+kind:Deployment
+metadata:
+  name:nginx
+spec:
+ replicas:2
+ template:
+   metadata:
+     labels:
+       app:nginx
+   spec:
+     containers:
+      - name:ngnix
+        image: nginx:1.13
+        ports: 
+         - containersPort: 80
