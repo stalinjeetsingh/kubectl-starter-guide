@@ -2,7 +2,13 @@ Installing helm:
  wget https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz
  tar -zxvf helm-v2.11.0-linux-amd64.tar.gz
  mv linux-amd64/helm /usr/local/bin/helm (so that helm can can executed as command)
- helm init
+ 
+ run bellow command:
+ ##kubectl --namespace kube-system create serviceaccount tiller
+## helm init
+
+## in case if helm throw error on running helm install than run :
+kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --user=admin --user=kubelet --group=system:serviceaccounts
  
  # creating chart
   helm create mychart
@@ -15,22 +21,24 @@ Helm chart
 
 **********************
 
-part1
+mychart
 
 it has three components:
 1. charts
 2.value
 3.templates
+    1.service
+    2.deployment (or replica set)..
 
 
 **********************
 chart.yml
 ## it just a basic descibtion about the whole taks/process
 
+apiVersion: v1
+appVersion: "1.0"
 name: testchart
-version: 1.0.0
 description: this is my 1st chart
-maintainers: me@gmail.com
 
 *************************
 
