@@ -81,6 +81,11 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
+      
+    
+ ## we dont use replica set but deployment because in replica we can only increae or decrease the no of conatiner/replica but no images or version 
+ ## or anything else. In deployment we can change anything as requirement  and also we can include no. of replicase required in deployment.yml
+      
 
 
 
